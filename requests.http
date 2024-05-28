@@ -64,7 +64,7 @@ Content-Type: application/json
   "isPercentage": 0
 }
 
-### Calculate Price
+### Calculate Price For DE With Discount 10%
 POST http://127.0.0.1:8337/calculate-price
 Accept: application/json
 Content-Type: application/json
@@ -72,17 +72,46 @@ Content-Type: application/json
 {
   "product": 1,
   "taxNumber": "DE123456789",
-  "couponCode": "D15"
+  "couponCode": "P10"
 }
 
-### Execute Purchase
-POST http://127.0.0.1:8337/purchase
+### Calculate Price For DE With Discount 100%
+POST http://127.0.0.1:8337/calculate-price
 Accept: application/json
 Content-Type: application/json
 
 {
   "product": 1,
-  "taxNumber": "IT12345678900",
-  "couponCode": "D15",
-  "paymentProcessor": "paypal"
+  "taxNumber": "DE123456789",
+  "couponCode": "P100"
+}
+
+### Calculate Price For DE Without Coupon
+POST http://127.0.0.1:8337/calculate-price
+Accept: application/json
+Content-Type: application/json
+
+{
+  "product": 1,
+  "taxNumber": "DE123456789"
+}
+
+### Calculate Price For IT Without Coupon
+POST http://127.0.0.1:8337/calculate-price
+Accept: application/json
+Content-Type: application/json
+
+{
+  "product": 1,
+  "taxNumber": "IT123456789"
+}
+
+### Calculate Price With Wrong Tax Number
+POST http://127.0.0.1:8337/calculate-price
+Accept: application/json
+Content-Type: application/json
+
+{
+  "product": 1,
+  "taxNumber": "123456789"
 }
