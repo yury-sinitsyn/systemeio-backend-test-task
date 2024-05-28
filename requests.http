@@ -115,3 +115,37 @@ Content-Type: application/json
   "product": 1,
   "taxNumber": "123456789"
 }
+
+### Execute Purchase OK
+POST http://127.0.0.1:8337/purchase
+Accept: application/json
+Content-Type: application/json
+
+{
+  "product": 1,
+  "taxNumber": "IT12345678900",
+  "couponCode": "P10",
+  "paymentProcessor": "paypal"
+}
+
+### Execute Purchase Wrong TAX
+POST http://127.0.0.1:8337/purchase
+Accept: application/json
+Content-Type: application/json
+
+{
+  "product": 1,
+  "taxNumber": "12345678900",
+  "paymentProcessor": "paypal"
+}
+
+### Execute Purchase Empty Values
+POST http://127.0.0.1:8337/purchase
+Accept: application/json
+Content-Type: application/json
+
+{
+  "product": 1,
+  "taxNumber": "",
+  "paymentProcessor": ""
+}
