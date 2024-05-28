@@ -30,7 +30,7 @@ down: ## Stop and remove containers and volumes.
 restart: stop start ## Restart services.
 
 console: ## Login in console.
-	${DC_EXEC} /bin/bash
+	${DC_EXEC} /bin/sh
 
 install:
 	${DC_RUN} composer install
@@ -38,3 +38,17 @@ install:
 success-message:
 	@echo "You can now access the application at http://localhost:8337"
 	@echo "Good luck! 🚀"
+
+migrations:
+	${DC_RUN} php bin/console doctrine:migrations:diff
+	${DC_RUN} php bin/console doctrine:migrations:migrate
+
+clear-cache:
+	${DC_RUN} composer dump-autoload
+	${DC_RUN} php bin/console cache:clear
+
+reset-db:
+	rm -f var/data.db
+	${DC_RUN} php bin/console doctrine:database:create
+	${DC_RUN} php bin/console doctrine:migrations:diff
+	${DC_RUN} php bin/console doctrine:migrations:migrate
