@@ -52,3 +52,6 @@ reset-db:
 	${DC_RUN} php bin/console doctrine:database:create
 	${DC_RUN} php bin/console doctrine:migrations:diff
 	${DC_RUN} php bin/console doctrine:migrations:migrate
+
+test:
+	${DC_RUN} php bin/phpunit
