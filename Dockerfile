@@ -1,12 +1,25 @@
 FROM php:8.3-cli-alpine as sio_test
-RUN apk add --no-cache git zip bash
+
+# Обновление индекса и установка необходимых пакетов
+RUN apk update && apk upgrade && apk add --no-cache \
+    git \
+    zip \
+    bash \
+    sqlite \
+    sqlite-dev
+
+# Установка PHP расширений
+RUN docker-php-ext-install pdo pdo_sqlite
+
+# Установка Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Setup php app user
+# Настройка пользователя для PHP приложения
 ARG USER_ID=1000
 RUN adduser -u ${USER_ID} -D -H app
 USER app
 
+# Копирование файлов приложения
 COPY --chown=app . /app
 WORKDIR /app
 
