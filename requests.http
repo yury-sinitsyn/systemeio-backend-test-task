@@ -1,3 +1,69 @@
+### Add product (Iphone)
+POST http://127.0.0.1:8337/add-product
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "Iphone",
+  "description": "Iphone",
+  "price": 100.0
+}
+
+### Add product (Наушники)
+POST http://127.0.0.1:8337/add-product
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "Наушники",
+  "description": "Наушники",
+  "price": 20.0
+}
+
+### Add product (Чехол)
+POST http://127.0.0.1:8337/add-product
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "Чехол",
+  "description": "Чехол",
+  "price": 10.0
+}
+
+### Add coupon (-10%)
+POST http://127.0.0.1:8337/add-coupon
+Accept: application/json
+Content-Type: application/json
+
+{
+  "code": "P10",
+  "discount": "10",
+  "isPercentage": 1
+}
+
+### Add coupon (-100%)
+POST http://127.0.0.1:8337/add-coupon
+Accept: application/json
+Content-Type: application/json
+
+{
+  "code": "P100",
+  "discount": "100",
+  "isPercentage": 1
+}
+
+### Add coupon (-20.0)
+POST http://127.0.0.1:8337/add-coupon
+Accept: application/json
+Content-Type: application/json
+
+{
+  "code": "P20",
+  "discount": "20",
+  "isPercentage": 0
+}
+
 ### Calculate Price
 POST http://127.0.0.1:8337/calculate-price
 Accept: application/json
